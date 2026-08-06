@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from schemas.schema import Student
+from schemas.schema import Student,StudentUpdate
 from services.service import (
     add_student,
     get_all_students,
@@ -26,8 +26,8 @@ def get_student(student_id: int):
     return get_student_by_id(student_id)
 
 
-@router.put("/{student_id}")
-def update(student_id: int, student: Student):
+@router.patch("/{student_id}")
+def update(student_id: int, student: StudentUpdate):
     return update_student(student_id, student)
 
 
