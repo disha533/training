@@ -1,5 +1,5 @@
 from pydantic import BaseModel,EmailStr
-class StudentCreate(BaseModel):
+class Student(BaseModel):
     id:int
     name:str
     age:int
