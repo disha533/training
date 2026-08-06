@@ -6,3 +6,10 @@ class Student(BaseModel):
     email:EmailStr
     branch:str
     year:int
+
+class StudentUpdate(BaseModel):
+    name: Optional[str] = None
+    age: Optional[int] = None
+    email: Optional[EmailStr] = None
+    branch: Optional[str] = None
+    year: Optional[int] = None
