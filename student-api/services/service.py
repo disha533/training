@@ -9,7 +9,6 @@ def add_student(student: Student):
         INSERT INTO STUDENTS (ID, NAME, AGE, EMAIL, BRANCH, YEAR)
         VALUES (:1, :2, :3, :4, :5, :6)
     """
-
     cursor.execute(query, (
         student.id,
         student.name,
