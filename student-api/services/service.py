@@ -1,7 +1,8 @@
 from database import connection
 from schemas.schema import Student
-
-
+from fastapi import HTTPException
+#do not have to ccreate connection in services
+#do nnot have to create  connection evrytime
 def add_student(student: Student):
     cursor = connection.cursor()
 
@@ -51,8 +52,7 @@ def get_student_by_id(student_id: int):
 
     if student:
         return student
-
-    return {"message": "Student not found"}
+    raise HTTPException(status_code=404,detail="Student not found")
 
 
 def update_student(student_id: int, student: Student):
@@ -76,7 +76,9 @@ def update_student(student_id: int, student: Student):
         student.year,
         student_id
     ))
-
+    if cursor.rowcount == 0:
+        cursor.close()
+        raise HTTPException(status_code=404,detail="Student not found")
     connection.commit()
     cursor.close()
 
@@ -87,6 +89,9 @@ def delete_student(student_id: int):
     cursor = connection.cursor()
 
     query = "DELETE FROM STUDENTS WHERE ID = :1"
+    if cursor.rowcount == 0:
+        cursor.close()
+    raise HTTPException(status_code=404,detail="Student not found")
 
     cursor.execute(query, (student_id,))
 
