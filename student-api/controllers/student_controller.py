@@ -1,4 +1,4 @@
-# controllers/student_controller.py
+
 from fastapi import APIRouter, Depends
 from schemas.schema import Student, StudentUpdate
 from vector_store import search_students_vector   
