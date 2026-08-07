@@ -1,6 +1,7 @@
 # controllers/student_controller.py
 from fastapi import APIRouter, Depends
 from schemas.schema import Student, StudentUpdate
+from vector_store import search_students_vector   
 from services.service import (
     add_student,
     get_all_students,
@@ -34,3 +35,7 @@ def update(student_id: int, student: StudentUpdate):
 @router.delete("/{student_id}")
 def delete(student_id: int):
     return delete_student(student_id)
+
+@router.get("/search/")
+def search(query: str, threshold: float = 0.5):
+    return search_students_vector(query, threshold=threshold)
