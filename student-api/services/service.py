@@ -12,7 +12,7 @@ def add_student(student: Student):
 
     with get_cursor(commit=True) as cursor:
         cursor.execute(query, data)
-
+    upsert_student_vector(data["id"], data["name"], data["email"])
     return {"message": "Student added successfully"}
 
 
@@ -46,6 +46,11 @@ def update_student(student_id: int, student: StudentUpdate):
         if cursor.rowcount == 0:
             raise HTTPException(status_code=404, detail="Student not found")
 
+    with get_cursor() as cursor:
+        cursor.execute("SELECT NAME, EMAIL FROM STUDENTS WHERE ID = :id", {"id": student_id})
+        name, email = cursor.fetchall()
+        upsert_student_vector(student_id, name, email)
+
     return {"message": "Student updated successfully"}
 
 
@@ -54,5 +59,5 @@ def delete_student(student_id: int):
         cursor.execute("DELETE FROM STUDENTS WHERE ID = :id", {"id": student_id})
         if cursor.rowcount == 0:
             raise HTTPException(status_code=404, detail="Student not found")
-
+    delete_student_vector(student_id)   
     return {"message": "Student deleted successfully"}
