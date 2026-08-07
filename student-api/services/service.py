@@ -48,7 +48,7 @@ def update_student(student_id: int, student: StudentUpdate):
 
     with get_cursor() as cursor:
         cursor.execute("SELECT NAME, EMAIL FROM STUDENTS WHERE ID = :id", {"id": student_id})
-        name, email = cursor.fetchall()
+        name, email = cursor.fetchone()
         upsert_student_vector(student_id, name, email)
 
     return {"message": "Student updated successfully"}
