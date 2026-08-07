@@ -3,6 +3,6 @@ myenv/
 __pycache__/
 *.py[cod]
 .vscode/
-chromadb/
+chroma_db/
 .DS_Store
 Thumbs.db
