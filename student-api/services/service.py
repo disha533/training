@@ -2,6 +2,7 @@
 from database import get_cursor
 from schemas.schema import Student, StudentUpdate
 from fastapi import HTTPException
+from vector_store import upsert_student_vector, delete_student_vector
 
 def add_student(student: Student):
     data = student.model_dump()
@@ -24,7 +25,7 @@ def get_all_students():
 def get_student_by_id(student_id: int):
     with get_cursor() as cursor:
         cursor.execute("SELECT * FROM STUDENTS WHERE ID = :id", {"id": student_id})
-        student = cursor.fetchone()
+        student = cursor.fetchall()
 
     if student:
         return student
