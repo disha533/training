@@ -3,3 +3,5 @@ uvicorn==0.52.1
 oracledb==4.0.2
 pydantic[email]==2.13.4
 python-dotenv
+clickhouse-connect
+sentence-transformers
