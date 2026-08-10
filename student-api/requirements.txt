@@ -5,3 +5,5 @@ pydantic[email]==2.13.4
 python-dotenv
 clickhouse-connect
 sentence-transformers
+chromadb
+SQLAlchemy==2.0.51
