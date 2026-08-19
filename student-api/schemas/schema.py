@@ -22,7 +22,8 @@ class SearchDoc(BaseModel):
     id: int
     name: str
     email: EmailStr
-    
+
+
 class Course(BaseModel):
     id: int
     name: str

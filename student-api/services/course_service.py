@@ -25,7 +25,7 @@ def get_all_courses(db_session: Session):
 
 
 def get_course_by_id(db_session: Session, course_id: int):
-    course = course = db_session.get(CourseModel, course_id)
+    course =  db_session.get(CourseModel, course_id)
     if not course:
         raise HTTPException(status_code=404, detail="Course not found")
     return course

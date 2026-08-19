@@ -5,7 +5,7 @@ from fastapi import APIRouter
 from schemas.schema import Student
 from services import student_service as service
 
-router = APIRouter(prefix="/students")
+router = APIRouter(prefix="/students", tags=["STUDENT APIS"],)
 
 
 @router.post("/")

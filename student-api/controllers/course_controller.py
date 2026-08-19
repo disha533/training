@@ -5,7 +5,7 @@ from db.sqlalchemydb import SessionDep
 from schemas.schema import Course
 from services import course_service as service
 
-router = APIRouter(prefix="/courses")
+router = APIRouter(prefix="/courses", tags=["Course API"])
 
 
 @router.post("/")

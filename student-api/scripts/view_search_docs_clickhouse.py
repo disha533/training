@@ -1,8 +1,8 @@
-# scripts/view_search_docs.py
+# scripts/view_search_docs_clickhouse.py
 #
 # Quick manual check of what's currently stored in ClickHouse:
 #   python -m scripts.view_search_docs
-import db
+
 from db.clickhouse import client
 
 result = client.query("SELECT id, name, email, length(embedding) FROM search_docs")

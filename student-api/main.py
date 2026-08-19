@@ -27,4 +27,3 @@ app.include_router(student_router)
 app.include_router(search_router)
 app.include_router(chroma_search_router)
 app.include_router(course_controller)
-
