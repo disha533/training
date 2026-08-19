@@ -1,0 +1,5 @@
+fastmcp
+sqlalchemy>=2.0
+oracledb
+pydantic>=2.0
+pydantic-settings

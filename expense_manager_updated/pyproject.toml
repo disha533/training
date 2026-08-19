@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "expense-managermcp"
+version = "0.1.1"
+description = "MCP server for recording and querying expenses backed by Oracle."
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp",
+    "sqlalchemy>=2.0",
+    "oracledb",
+    "pydantic>=2.0",
+    "pydantic-settings",
+]
+
+[project.optional-dependencies]
+client = ["google-genai", "fastapi", "uvicorn[standard]", "jinja2"]
+
+[project.scripts]
+expense-mcp = "expense_manager_mcp.server:main"
+
+[tool.setuptools.packages.find]
+include = ["expense_manager_mcp*", "agent_client*"]
